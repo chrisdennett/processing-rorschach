@@ -4,6 +4,8 @@ float zoff = 0.0;
 // We will increment zoff differently than xoff and yoff
 float zincrement = 0.002; 
 
+// TODO: try increasint x or y
+
 void setup() {
   size(640, 360);
   frameRate(30);
