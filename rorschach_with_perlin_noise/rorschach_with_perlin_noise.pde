@@ -2,12 +2,10 @@ float increment = 0.01;
 // The noise function's 3rd argument, a global variable that increments once per cycle
 float zoff = 0.0;  
 // We will increment zoff differently than xoff and yoff
-float zincrement = 0.002; 
-
-// TODO: try increasing x or y
+float zincrement = 0.008; 
 
 void setup() {
-  size(640, 360);
+  size(960, 960);
   frameRate(30);
 }
 
@@ -35,14 +33,18 @@ void draw() {
         bright = 0;
       }
 
-      // Set each pixel onscreen to a grayscale value
-      pixels[x+y*width] = color(bright, bright, bright);
-      
-      // create the reflected pixel
-      int flippedXPos = width - x - 1; 
-      int loc = (y*width) + flippedXPos;
-      pixels[loc] = color(bright, bright, bright);
-      
+      // distance from center
+      float distFromCenter = dist(width/2, width/2, x, y);
+
+      if (distFromCenter < 400) {
+        // Set each pixel onscreen to a grayscale value
+        pixels[x+y*width] = color(bright, bright, bright);
+
+        // create the reflected pixel
+        int flippedXPos = width - x - 1; 
+        int loc = (y*width) + flippedXPos;
+        pixels[loc] = color(bright, bright, bright);
+      }
     }
   }
   updatePixels();
