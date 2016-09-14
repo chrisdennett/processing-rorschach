@@ -10,8 +10,9 @@ void setup() {
 }
 
 void draw() {
+  background(255);
   // Optional: adjust noise detail here
-  // noiseDetail(8,0.65f);
+  // noiseDetail(8,0.65f)
 
   loadPixels();
 
