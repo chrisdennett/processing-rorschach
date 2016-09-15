@@ -56,5 +56,5 @@ void draw() {
 
   zoff += zincrement; // Increment zoff
   
-  saveFrame("frames/rorschach_square_####");
+  //saveFrame("frames/rorschach_square_####");
 }
