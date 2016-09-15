@@ -2,10 +2,11 @@ float increment = 0.01;
 // The noise function's 3rd argument, a global variable that increments once per cycle
 float zoff = 0.0;  
 // We will increment zoff differently than xoff and yoff
-float zincrement = 0.008; 
+float zincrement = 0.008;
+boolean inCircleMode = false;
 
 void setup() {
-  size(960, 960);
+  size(800, 800);
   frameRate(30);
 }
 
@@ -35,9 +36,12 @@ void draw() {
       }
 
       // distance from center
-      float distFromCenter = dist(width/2, width/2, x, y);
+      float distFromCenter = 0;
+      if (inCircleMode) {
+        distFromCenter = dist(width/2, width/2, x, y);
+      }
 
-      if (distFromCenter < 400) {
+      if (!inCircleMode || distFromCenter < 400) {
         // Set each pixel onscreen to a grayscale value
         pixels[x+y*width] = color(bright, bright, bright);
 
@@ -51,4 +55,6 @@ void draw() {
   updatePixels();
 
   zoff += zincrement; // Increment zoff
+  
+  saveFrame("frames/rorschach_square_####");
 }
